@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Street Pizza & Espresso | San Jose</title>
+    <style>
+        :root {
+            --primary: #c2410c; /* Pizza Red/Orange */
+            --dark: #1f2937;
+            --light: #f3f4f6;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+            background-color: var(--primary);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            position: relative;
+            background-color: #374151;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            /* Update the URL below with your actual hero image file path */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-pizza.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .info-box, .hours-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .gallery {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>First Street Pizza & Espresso</h2>
+        <p>Premium Slices, Fresh Pours & Coffee</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to the Bar</h1>
+        <p>Your local spot for fresh pizza and ice-cold tapped brews in the heart of San Jose.</p>
+    </section>
+
+    <section class="container" id="location">
+        <div class="info-box">
+            <h3>Visit Us</h3>
+            <p><strong>Address:</strong><br>33 S 1st St<br>San Jose, CA 95113</p>
+            <p><strong>Phone:</strong><br><a href="tel:+14083525371" style="color: var(--primary); text-decoration: none;">(408) 352-5371</a></p>
+            <p><strong>Vibe:</strong> Casual pizza joint featuring an espresso bar and premium beers on tap. Grab a slice, sip a brew, and relax.</p>
+        </div>
+
+        <div class="hours-box">
+            <h3>Hours of Operation</h3>
+            <ul style="list-style-type: none; padding: 0; line-height: 1.8;">
+                <li><strong>Monday:</strong> 12:00 PM - 10:00 PM</li>
+                <li><strong>Tuesday:</strong> 9:00 AM - 10:00 PM</li>
+                <li><strong>Wednesday:</strong> 9:00 AM - 10:00 PM</li>
+                <li><strong>Thursday:</strong> 9:00 AM - 10:00 PM</li>
+                <li><strong>Friday:</strong> 11:00 AM - 12:00 AM</li>
+                <li><strong>Saturday:</strong> 11:00 AM - 12:00 AM</li>
+                <li><strong>Sunday:</strong> 11:00 AM - 10:00 PM</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <img src="images/bar-taps.jpg" alt="Our bar featuring tapped brews">
+        <img src="images/pizza-slice.jpg" alt="Fresh pizza slices">
+        <img src="images/storefront.jpg" alt="First Street Pizza & Espresso storefront">
+    </section>
+
+    <footer>
+        <p>&copy; 2024 First Street Pizza & Espresso. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
