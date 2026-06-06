@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Livelier, more appetizing palette */
+            /* 49ers Red & Gold inspired palette */
             --dough:       #fffdf7;
             --dough-dark:  #f4ede1;
-            --tomato:      #e3342f;   /* Vibrant pizza red */
-            --tomato-dark: #c02b27;
-            --crust:       #f59e0b;   /* Rich golden brown */
-            --cheese:      #fbbf24;   /* Warm melted yellow */
+            --tomato:      #AA0000;   /* 49ers Red */
+            --tomato-dark: #7a0000;   /* Deep red for hover states */
+            --crust:       #B3995D;   /* 49ers Gold */
+            --cheese:      #e5c378;   /* Softer gold for badges and UI backgrounds */
             --basil:       #27633a;   /* Fresh green */
             --charcoal:    #2c1e16;   /* Softer, warmer dark text */
             --wood:        #4a3324;
@@ -70,6 +70,13 @@
             transition: color 0.3s;
         }
         .nav-brand:hover { color: var(--crust); }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--tomato);
+        }
+        
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a {
             color: var(--charcoal);
@@ -131,7 +138,7 @@
             padding: 0.5rem 1.2rem;
             border-radius: 50px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 4px 15px rgba(229, 195, 120, 0.4);
             opacity: 0;
             animation: bounceIn 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -190,12 +197,12 @@
         .btn-primary {
             background: var(--tomato);
             color: var(--dough);
-            box-shadow: 0 8px 25px rgba(227, 52, 47, 0.4);
+            box-shadow: 0 8px 25px rgba(170, 0, 0, 0.4);
         }
         .btn-primary:hover {
             background: var(--tomato-dark);
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(227, 52, 47, 0.6);
+            box-shadow: 0 12px 30px rgba(170, 0, 0, 0.6);
         }
         .btn-secondary {
             background: rgba(255, 253, 247, 0.1);
@@ -268,7 +275,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(227, 52, 47, 0.03) 0%, transparent 40%),
+            background: radial-gradient(circle at 10% 20%, rgba(170, 0, 0, 0.03) 0%, transparent 40%),
                         radial-gradient(circle at 90% 80%, rgba(39, 99, 58, 0.04) 0%, transparent 40%);
             pointer-events: none;
         }
@@ -455,7 +462,7 @@
             margin-top: 0.5rem;
         }
         .item-desc {
-            font-size: 0.95rem;
+            font-size: 1.05rem; /* Increased readability */
             color: var(--wood);
             line-height: 1.6;
             margin-bottom: 1.5rem;
@@ -484,7 +491,7 @@
             border: 1px solid rgba(0,0,0,0.05);
             transition: background 0.2s;
         }
-        .menu-card:hover .price-bubble { background: rgba(251, 191, 36, 0.15); }
+        .menu-card:hover .price-bubble { background: rgba(229, 195, 120, 0.15); }
         .price-bubble span {
             display: block;
             font-family: 'Cormorant Garamond', serif;
@@ -568,7 +575,7 @@
         /* ── LOCATION / HOURS ── */
         .location-section {
             background-color: var(--dough);
-            background-image: radial-gradient(circle at center, rgba(227, 52, 47, 0.03) 0%, transparent 70%);
+            background-image: radial-gradient(circle at center, rgba(170, 0, 0, 0.03) 0%, transparent 70%);
         }
         #location { max-width: 1200px; margin: 0 auto; }
         .location-grid {
@@ -621,7 +628,7 @@
         .hours-list li:last-child { border-bottom: none; }
         .hours-list .day { font-weight: 600; color: var(--charcoal); }
         .hours-list li.today {
-            background: rgba(251, 191, 36, 0.15);
+            background: rgba(229, 195, 120, 0.15);
             margin: 0 -1.5rem;
             padding: 1rem 1.5rem;
             border-radius: 8px;
@@ -683,7 +690,7 @@
         .social-link:hover {
             background: var(--tomato);
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(227, 52, 47, 0.4);
+            box-shadow: 0 10px 20px rgba(170, 0, 0, 0.4);
         }
         .footer-copy {
             font-size: 0.85rem;
@@ -715,8 +722,30 @@
             .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
         }
         @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; }
+            nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
+            .hamburger { display: block; }
+            .nav-links { 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 253, 247, 0.98);
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                align-items: center;
+                border-bottom: 0px solid var(--tomato);
+            }
+            .nav-links.open {
+                max-height: 250px;
+                padding: 1.5rem 0;
+                border-bottom-width: 3px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            }
+            .nav-links a { font-size: 1.1rem; }
             .hero { padding: 0 1.5rem; text-align: center; align-items: center; }
             .hero-content { margin-top: 2rem; }
             .hero-ctas { justify-content: center; }
@@ -735,7 +764,10 @@
     <!-- NAV -->
     <nav id="navbar">
         <a href="#" class="nav-brand">First Street Pizza & Espresso</a>
-        <ul class="nav-links">
+        <div class="hamburger" id="hamburger">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#about">Our Story</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#gallery-section">Gallery</a></li>
@@ -805,7 +837,7 @@
             </div>
             <div class="about-image-col reveal" style="transition-delay:0.2s">
                 <div class="about-img-frame">
-                    <img src="images/fp1.jpg" alt="Fresh pizza slices sizzling">
+                    <img src="images/fp1.jpg" alt="Fresh pizza slices sizzling" loading="lazy">
                 </div>
                 <div class="about-img-badge">
                     <span>"Always Fresh, Always Hot"</span>
@@ -1256,15 +1288,15 @@
             <h2 class="section-title">A Slice of <em>Downtown Life</em></h2>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item reveal"><img src="images/fp5.JPG" alt="Fresh pizza"><div class="gallery-caption"><div class="gallery-caption-text">Fresh From the Oven</div><div class="gallery-caption-sub">Handmade Daily</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="images/fp2.png" alt="Bar"><div class="gallery-caption"><div class="gallery-caption-text">Cold Tapped Brews</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="images/IMG_3207.jpeg" alt="Storefront"><div class="gallery-caption"><div class="gallery-caption-text">The Bar</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="images/IMG_3212.jpeg" alt="Slices"><div class="gallery-caption"><div class="gallery-caption-text">Signature Slices</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="images/IMG_3205.jpeg" alt="Espresso"><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="images/IMG_2621.jpeg" alt="Espresso"><div class="gallery-caption"><div class="gallery-caption-text">Half Pepporoni & Half Cheese</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="images/IMG_2627.jpeg" alt="Espresso"><div class="gallery-caption"><div class="gallery-caption-text">Meat Pizza</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="images/IMG_2533.jpeg" alt="Espresso"><div class="gallery-caption"><div class="gallery-caption-text">Hawaiin</div></div></div>
-            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="images/IMG_1859.jpeg" alt="Espresso"><div class="gallery-caption"><div class="gallery-caption-text">Michileda</div></div></div>
+            <div class="gallery-item reveal"><img src="images/fp5.JPG" alt="Fresh pizza" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Fresh From the Oven</div><div class="gallery-caption-sub">Handmade Daily</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.1s"><img src="images/fp2.png" alt="Bar" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Cold Tapped Brews</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.2s"><img src="images/IMG_3207.jpeg" alt="Storefront" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">The Storefront</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.3s"><img src="images/IMG_3212.jpeg" alt="Slices" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Signature Slices</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.4s"><img src="images/IMG_3205.jpeg" alt="Espresso" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.4s"><img src="images/IMG_2621.jpeg" alt="Espresso" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.5s"><img src="images/IMG_2627.jpeg" alt="Espresso" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.5s"><img src="images/IMG_2533.jpeg" alt="Espresso" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
+            <div class="gallery-item reveal" style="transition-delay:0.5s"><img src="images/IMG_1859.jpeg" alt="Espresso" loading="lazy"><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
         </div>
     </section>
 
@@ -1325,6 +1357,21 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinksMenu = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinksMenu.classList.toggle('open');
+        });
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksMenu.classList.remove('open');
+            });
         });
 
         // Scroll reveals
